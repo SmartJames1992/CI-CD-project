@@ -8,13 +8,13 @@ app.use(cors());
 app.use(express.json());
 
 const profile = {
-  name: 'Alex Morgan',
-  title: 'DevOps Engineer & Frontend Developer',
-  location: 'Seattle, WA',
-  email: 'alex@example.com',
+  name: 'Jonathan Burkhardt',
+  title: 'Senior Software Engineer & DevOps Specialist',
+  location: 'Stockholm, Sweden',
+  email: 'jonathan.burkhardt@gmail.com',
   summary:
-    'I design deployment systems and product experiences that help teams move fast without sacrificing reliability and clear user value.',
-  availability: 'Open to product engineering roles',
+    'I specialize in building resilient product experiences and automations that help teams ship faster with confidence. My expertise spans frontend development, backend systems, and DevOps practices, enabling me to deliver end-to-end solutions.',
+  availability: 'Open to software engineering and DevOps opportunities.',
 };
 
 const projects = [

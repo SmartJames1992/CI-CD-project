@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 const fallbackProfile = {
-  name: 'Alex Morgan',
-  title: 'DevOps Engineer & Frontend Developer',
-  location: 'Seattle, WA',
-  email: 'alex@example.com',
+  name: 'Jonathan Burkhardt',
+  title: 'Senior Software Engineer & DevOps Specialist',
+  location: 'Stockholm, Sweden',
+  email: 'jonathan.burkhardt@gmail.com',
   summary:
-    'I design deployment systems and product experiences that help teams move fast without sacrificing reliability, clarity, or trust.',
-  availability: 'Available for product engineering roles',
+    'I specialize in building resilient product experiences and automations that help teams ship faster with confidence. My expertise spans frontend development, backend systems, and DevOps practices, enabling me to deliver end-to-end solutions.',
+  availability: 'Open to software engineering and DevOps opportunities.',
 }
 
 const fallbackMetrics = [
