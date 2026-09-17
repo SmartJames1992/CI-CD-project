@@ -1,4 +1,4 @@
-name: CI/CD Portfolio Pipeline
+name: Full-Stack CI/CD Pipeline
 
 on:
   push:
@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,34 +28,36 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install backend dependencies
+        run: npm install --prefix server
 
-      - name: Run tests
-        run: npm test
+      - name: Install frontend dependencies
+        run: npm install --prefix client
 
-      - name: Build app
-        run: npm run build
+      - name: Run backend tests
+        run: npm --prefix server test
+
+      - name: Build React frontend
+        run: npm --prefix client run build
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Pages artifact
+      - name: Upload frontend artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./client/dist
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: build
+    needs: build-and-test
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy frontend to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

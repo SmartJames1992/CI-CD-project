@@ -1,41 +1,74 @@
-# CI/CD Portfolio Project
+# Full-Stack CI/CD Portfolio
 
-This project is a lightweight portfolio website built to demonstrate a modern GitHub-based CI/CD pipeline. It includes:
+This project is a full-stack portfolio application built to demonstrate modern delivery practices:
 
-- A Vite frontend application
-- Automated testing
-- Build validation
-- Artifact publishing
-- Deployment to GitHub Pages
+- React frontend for the portfolio UI
+- Express backend for API-driven data
+- Docker Compose for local multi-service orchestration
+- CI validation and production build checks
+- GitHub Pages deployment for the frontend
+
+## Repository layout
+
+- client/: React app and Vite configuration
+- server/: Express API and backend tests
+- docker-compose.yml: local Docker startup for both services
+- .github/workflows/ci-cd.yml: CI/CD pipeline definition
+- package.json: root scripts for local orchestration
+
+> The root project is only the orchestration layer. The actual app code lives in the client and server folders.
 
 ## Local development
 
-```bash
-npm install
-npm run dev
-```
-
-## Production build
+Install dependencies:
 
 ```bash
-npm run build
+npm install --prefix server
+npm install --prefix client
 ```
 
-## Testing
+Start the backend:
 
 ```bash
-npm test
+npm run dev:server
 ```
 
-## GitHub Actions
+Start the frontend:
 
-The workflow in `.github/workflows/ci-cd.yml` uses the official GitHub Pages deployment flow:
+```bash
+npm run dev:client
+```
 
-- validates the app on pull requests
-- runs tests and production build on push
-- publishes the static site to GitHub Pages for the main branch
-- uses GitHub-managed Pages deployment instead of a third-party action
+Or run everything with Docker:
+
+```bash
+docker compose up --build
+```
+
+## Production build and validation
+
+Frontend build:
+
+```bash
+npm --prefix client run build
+```
+
+Backend tests:
+
+```bash
+npm --prefix server test
+```
+
+## GitHub Actions workflow
+
+The workflow in [.github/workflows/ci-cd.yml](.github/workflows/ci-cd.yml):
+
+- installs both service dependencies
+- runs backend tests
+- builds the React app
+- uploads the frontend bundle as a Pages artifact
+- deploys the frontend to GitHub Pages on pushes to main
 
 ## Customization
 
-Update the information in `src/data.js` and the styling in `src/styles.css` to personalize the portfolio.
+Update the profile content, project data, and styling in the frontend and backend to match your own portfolio and deployment goals.

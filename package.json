@@ -1,15 +1,14 @@
 {
-  "name": "ci-cd-portfolio",
+  "name": "fullstack-ci-cd-portfolio",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 4173",
-    "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0 --port 4173",
-    "test": "node --test"
-  },
-  "devDependencies": {
-    "vite": "^5.4.10"
+    "install:client": "npm install --prefix client",
+    "install:server": "npm install --prefix server",
+    "dev:client": "npm --prefix client run dev -- --host 0.0.0.0 --port 5173",
+    "dev:server": "npm --prefix server run dev",
+    "build": "npm --prefix client run build",
+    "test": "npm --prefix server test",
+    "docker:up": "docker compose up --build"
   }
 }
