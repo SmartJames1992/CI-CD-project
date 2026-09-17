@@ -6,3 +6,13 @@ coverage/
 .env.*
 .DS_Store
 npm-debug.log*
+
+# Firebase local cache and debug logs
+.firebase/
+firebase-debug.log*
+firebase-debug.*.log
+
+# Local coding-agent tools
+.agents/
+.claude/
+skills-lock.json
