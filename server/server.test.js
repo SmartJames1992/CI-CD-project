@@ -31,8 +31,8 @@ test('profile endpoint returns expected structure', async () => {
   const { response, body } = await request('/api/profile');
 
   assert.equal(response.status, 200);
-  assert.equal(body.name, 'Alex Morgan');
-  assert.equal(body.title, 'DevOps Engineer & Frontend Developer');
+  assert.equal(body.name, 'Jonathan Burkhardt');
+  assert.equal(body.title, 'Senior Software Engineer & DevOps Specialist');
 });
 
 test('projects endpoint returns at least one project', async () => {
